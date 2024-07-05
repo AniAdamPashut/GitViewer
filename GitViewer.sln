@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL.Core", "BL.Core\BL.Core.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "Playground\Playground.csproj", "{8F22AF0C-F202-47CC-A741-AE9C32849452}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL.Builtins", "BL.Builtins\BL.Builtins.csproj", "{BBAD7096-8F90-488A-81D8-C0C2EE296D54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,17 @@ Global
 		{8F22AF0C-F202-47CC-A741-AE9C32849452}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F22AF0C-F202-47CC-A741-AE9C32849452}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F22AF0C-F202-47CC-A741-AE9C32849452}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBAD7096-8F90-488A-81D8-C0C2EE296D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBAD7096-8F90-488A-81D8-C0C2EE296D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBAD7096-8F90-488A-81D8-C0C2EE296D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBAD7096-8F90-488A-81D8-C0C2EE296D54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F42334FD-4CA2-4AEB-A291-D779B4D211F7} = {57C3FD7A-D541-4D9A-AA96-E8CC24E7C53D}
+		{BBAD7096-8F90-488A-81D8-C0C2EE296D54} = {57C3FD7A-D541-4D9A-AA96-E8CC24E7C53D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA42E943-BEF9-490C-B8BF-E22454810117}
