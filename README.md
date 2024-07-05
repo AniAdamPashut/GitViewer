@@ -10,3 +10,11 @@ A program that looks into different staging of git and let you view your files i
 -  Learn git
 -  Track files using git filters
 -  For now support only latest commit with no difference between staging
+
+Relevant Git Commands
+===
+1. `git ls-files` - Get all files tracked in a directory
+2. `git checkout` - Allows inspecting different commits
+3. `git reflog` - List of commits
+
+This is a test
