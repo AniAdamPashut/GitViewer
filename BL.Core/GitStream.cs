@@ -4,34 +4,28 @@ using System.Diagnostics;
 
 namespace BL.Core;
 
-public class GitStream
+public class GitStream : IGitConnection
 {
-    public readonly string GitBashFolder = @"C:\Program Files\Git\bin\";
-    public readonly string GitBashExe = @"git.exe";
-    
     private readonly ILogger _logger;
-    public GitStream(ILogger logger)
+    private Process _process;
+    private readonly ProcessStartInfo _startInfo;
+
+    private StreamReader _processOutput => _process.StandardOutput;
+    public GitStream(ILogger logger, ProcessStartInfo psi)
     {
         _logger = logger;
+        psi.RedirectStandardOutput = true;
+        _startInfo = psi;
+        _process = new() { StartInfo = _startInfo };
     }
 
-    public void OpenGitWindow()
+    public string Do(string cmd)
     {
-        ProcessStartInfo startInfo = new()
-        {
-            FileName = GitBashFolder + GitBashExe,
-            UseShellExecute = false,
-            RedirectStandardOutput = true,
-            Arguments = "log",
-            WindowStyle = ProcessWindowStyle.Hidden,
-        };
-        Process process = new()
-        {
-            StartInfo = startInfo,
-        };
-        process.Start();
-        _logger.LogInformation("Test, Opening Git Commands");
-        var output = process.StandardOutput.ReadToEnd();
-        Console.WriteLine(output);
+        _logger.LogInformation($"Message received: {cmd}");
+        _startInfo.Arguments = cmd;
+        _process.Start();
+        string output = _processOutput.ReadToEnd();
+        return output;
+
     }
 }
