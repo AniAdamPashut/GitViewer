@@ -14,7 +14,5 @@ A program that looks into different staging of git and let you view your files i
 Relevant Git Commands
 ===
 1. `git ls-files` - Get all files tracked in a directory
-2. `git checkout` - Allows inspecting different commits
-3. `git reflog` - List of commits
-
-This is a test
+2. `git checkout <COMMIT-HASH>` - Allows inspecting different commits
+3. `git reflog show --pretty="%h~%cn~%ch~%cI~%s"` - Shows commit in a cool parse-able format
