@@ -1,4 +1,4 @@
-﻿using BL.Core;
+﻿using BL.Core.Models;
 using System.Text.Json.Serialization;
 
 namespace BL.Builtins;
@@ -7,8 +7,8 @@ namespace BL.Builtins;
 public record CommandConfig
 {
     [JsonPropertyName("commitListCommand")]
-    public Command CommitList { get; init; }
+    public Command GetCommits { get; init; }
     [JsonPropertyName("fileListCommand")]
-    public Command FilesList { get; init; }
+    public Command GetFiles { get; init; }
 }
 

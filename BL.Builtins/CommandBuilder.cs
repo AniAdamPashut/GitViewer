@@ -1,5 +1,5 @@
-﻿using BL.Core;
-using BL.Core.Flags;
+﻿using BL.Core.Models;
+using BL.Core.Models.Flags;
 
 namespace BL.Builtins;
 

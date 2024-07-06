@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using BL.Core.Models;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 namespace BL.Core;

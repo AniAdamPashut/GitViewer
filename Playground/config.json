@@ -11,9 +11,7 @@
     },
     "fileListCommand": {
         "name": "ls-tree",
-        "arguments": [
-            "HEAD"
-        ],
+        "arguments": [],
         "flags": [
             {
                 "Name": "r",

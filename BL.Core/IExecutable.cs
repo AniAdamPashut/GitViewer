@@ -1,4 +1,6 @@
-﻿namespace BL.Core;
+﻿using BL.Core.Models;
+
+namespace BL.Core;
 
 public interface IExecutable
 {

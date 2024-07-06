@@ -1,12 +1,11 @@
-﻿using BL.Core.Flags;
-
+﻿using BL.Core.Models.Flags;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace BL.Core;
+namespace BL.Core.Models;
 
 [JsonSerializable(typeof(Command))]
-public class Command
+public record Command
 {
     [JsonPropertyName("name")]
     public string Name { get; }

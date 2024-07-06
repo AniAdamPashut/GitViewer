@@ -1,7 +1,5 @@
-﻿using BL.Core;
-using BL.Core.Flags;
-using BL.Builtins;
-
+﻿using BL.Builtins;
+using BL.Core.Models;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text.Json;
@@ -21,15 +19,12 @@ ProcessStartInfo psi = new()
 
 using FileStream fs = new FileStream("config.json", FileMode.Open);
 
-var json = JsonSerializer.Deserialize<CommandConfig>(fs);
-Console.WriteLine(json);
-Console.WriteLine(json.CommitList);
-Console.WriteLine(json.FilesList);
-
+var config = JsonSerializer.Deserialize<CommandConfig>(fs);
 
 GitExecutable git = new(GIT_EXE_PATH, logger, psi);
-string output = git.Do(json.CommitList);
-Console.WriteLine(output);
-Console.WriteLine();
-Console.WriteLine(git.Do(json.FilesList));
+
+var fetcher = new CommitFetcher(config.GetCommits, git);
+var commits = fetcher.Fetch();
+
+Console.WriteLine(commits);
 Console.ReadKey();
