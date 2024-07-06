@@ -1,4 +1,5 @@
 ﻿using BL.Builtins;
+
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text.Json;
@@ -30,7 +31,7 @@ foreach (var commit in commits)
 }
 
 var fileFetcher = new FileFetcher(config.FetchFilesCommand, git);
-var files = fileFetcher.Fetch("feature/base");
+var files = fileFetcher.Fetch("HEAD");
 foreach (var file in files)
 {
     Console.WriteLine(file);

@@ -1,6 +1,7 @@
 GitViewer 
 ===
-`I don't wanna push just to see if my `.vs` folder was removed by the gitignore.`
+> I don't wanna push just to see if my `.vs` folder was removed by the gitignore.
+
 
 Todo
 ===
