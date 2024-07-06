@@ -21,6 +21,11 @@ public class Command
         _arguments = arguments;
     }
 
+    public void AddArgument(string arg)
+    {
+        _arguments.Add(arg);
+    }
+
     public void AddFlag(Flag flag)
     {
         if (flag is null

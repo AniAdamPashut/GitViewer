@@ -9,7 +9,7 @@ public class CommandBuilder
 
     public CommandBuilder(string cmd, HashSet<string> allowedFlags)
     {
-        _command = new Command(cmd, allowedFlags);
+        _command = new Command(cmd, [], allowedFlags);
     }
 
     public CommandBuilder AddFlag(Flag flag)
@@ -17,7 +17,12 @@ public class CommandBuilder
         _command.AddFlag(flag);
         return this;
     }
-
+    
+    public CommandBuilder AddArgument(string arg)
+    {
+        _command.AddArgument(arg);
+        return this;
+    }
     public Command Build()
     {
         return _command;

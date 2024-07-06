@@ -2,7 +2,8 @@
 
 public interface IExecutable
 {
-    void Send(string cmd);
-    string Do(string cmd);
+    void Send(Command cmd);
+    string Do(Command cmd);
+
 }
 

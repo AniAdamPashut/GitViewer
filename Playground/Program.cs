@@ -11,26 +11,18 @@ using ILoggerFactory factory = LoggerFactory.Create(builder => {
 });
 ILogger logger = factory.CreateLogger("GitViewer");
 
-const string gitExePath = @"C:\Program Files\Git\bin\bash.exe";
+const string GIT_EXE_PATH = @"C:\Program Files\Git\bin\";
 
 ProcessStartInfo psi = new()
 {
     WorkingDirectory = @"C:\Users\mineb\Desktop\code\GitViewer",
-    FileName = gitExePath,
 };
 
-Command echoHelloWorld = new("echo Hello World", new());
-
-Command bashExe = new CommandBuilder("", new()
-{
-    "c",
-})
-    .AddFlag(new ValuedShortFlag("c", $"\"{echoHelloWorld}\""))
+Command gitReflogShow = new CommandBuilder("add", [])
+    .AddArgument(".")
     .Build();
 
-Console.WriteLine(bashExe.ToString());
-
-GitStream git = new(logger, psi);
-string output = git.Do(bashExe.ToString());
+GitExecutable git = new(GIT_EXE_PATH, logger, psi);
+string output = git.Do(gitReflogShow);
 Console.WriteLine(output);
 Console.ReadKey();
