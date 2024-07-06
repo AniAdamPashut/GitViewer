@@ -7,16 +7,28 @@ public class FileFetcher
 {
     private Command _command;
     private IExecutable _executor;
-    private Func<string, List<string>> _parse;
+    private Func<string, IEnumerable<string>> _parse;
 
-    public FileFetcher(IExecutable exe, Command command, Func<string, List<string>> parse)
+    protected IEnumerable<string> Parse(string input)
+    {
+        return input.Split("\n");
+    }
+
+    public FileFetcher(Command command, IExecutable executor)
+    {
+        _command = command;
+        _executor = executor;
+        _parse = Parse;
+    }
+
+    public FileFetcher(Command command, IExecutable exe, Func<string, List<string>> parse)
     {
         _command = command;
         _executor = exe;
         _parse = parse;
     }
 
-    public List<string> Fetch(string commitHash)
+    public IEnumerable<string> Fetch(string commitHash)
     {
         _command = _command with { Arguments = [commitHash] };
         var files = _executor.Do(_command);

@@ -6,11 +6,12 @@ namespace BL.Core;
 
 public abstract class ExecuteableBase : IExecutable
 {
+    protected StreamReader ProcessOutput => InnerProcess.StandardOutput;
+
     protected readonly ILogger Logger;
     protected readonly Process InnerProcess;
     protected readonly ProcessStartInfo StartInformation;
 
-    protected StreamReader _processOutput => InnerProcess.StandardOutput;
     public ExecuteableBase(string exePath, string exeName, ILogger logger, ProcessStartInfo psi)
     {
         Logger = logger;
@@ -28,6 +29,6 @@ public abstract class ExecuteableBase : IExecutable
     public string Do(Command cmd)
     {
         Send(cmd);
-        return _processOutput.ReadToEnd();
+        return ProcessOutput.ReadToEnd();
     }
 }

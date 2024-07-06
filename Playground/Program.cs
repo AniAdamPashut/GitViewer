@@ -1,11 +1,11 @@
 ﻿using BL.Builtins;
-using BL.Core.Models;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text.Json;
 
 
-using ILoggerFactory factory = LoggerFactory.Create(builder => {
+using ILoggerFactory factory = LoggerFactory.Create(builder =>
+{
     builder.AddConsole();
 });
 ILogger logger = factory.CreateLogger("GitViewer");
@@ -23,11 +23,18 @@ var config = JsonSerializer.Deserialize<CommandConfig>(fs);
 
 GitExecutable git = new(GIT_EXE_PATH, logger, psi);
 
-var fetcher = new CommitFetcher(config.GetCommits, git);
-var commits = fetcher.Fetch();
+var commitFetcher = new CommitFetcher(config.GetCommits, git);
+var commits = commitFetcher.Fetch();
 foreach (var commit in commits)
 {
-    Console.WriteLine(commit);
+    Console.WriteLine(commit.Hash);
+}
+
+var fileFetcher = new FileFetcher(config.GetFiles, git);
+var files = fileFetcher.Fetch(commits.First().Hash);
+foreach (var file in files)
+{
+    Console.WriteLine(file);
 }
 
 Console.ReadKey();

@@ -12,22 +12,6 @@ public record Commit
     public DateTime Date { get; init; }
     public string Message { get; init; }
 
-    public Commit(string commitToParse)
-    {
-        string[] values = commitToParse.Split('~');
-        if (values.Length != 5)
-            throw new ArgumentException($"CommitToParse was in a bad format: {commitToParse}");
-        Hash = values[0];
-        Commiter = values[1];
-        HumanizedDate = values[2];
-        Message = values[3];
-
-        var date = values[4];
-        if (!DateTime.TryParse(date, out DateTime parsed))
-            throw new ArgumentException($"Cannot parse date {date} into a DateTime object");
-        Date = parsed;
-    }
-
     public Commit(
         string hash,
         string commiter,
