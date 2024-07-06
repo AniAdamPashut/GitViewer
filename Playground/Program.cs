@@ -17,7 +17,7 @@ ProcessStartInfo psi = new()
     WorkingDirectory = @"C:\Users\mineb\Desktop\code\GitViewer",
 };
 
-using FileStream fs = new FileStream("config.json", FileMode.Open);
+using FileStream fs = new("config.json", FileMode.Open);
 
 var config = JsonSerializer.Deserialize<CommandConfig>(fs);
 

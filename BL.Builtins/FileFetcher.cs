@@ -5,11 +5,11 @@ namespace BL.Builtins;
 
 public class FileFetcher
 {
-    private Command _command;
-    private IExecutable _executor;
-    private Func<string, IEnumerable<string>> _parse;
+    private readonly Command _command;
+    private readonly IExecutable _executor;
+    private readonly Func<string, IEnumerable<string>> _parse;
 
-    protected IEnumerable<string> Parse(string input)
+    protected virtual IEnumerable<string> Parse(string input)
     {
         return input.Split(Environment.NewLine);
     }
@@ -28,10 +28,14 @@ public class FileFetcher
         _parse = parse;
     }
 
+    public IEnumerable<string> Fetch(Commit commit)
+    {
+        var files = _executor.Do(_command with { Arguments = [commit.Hash] });
+        return _parse(files);
+    }
     public IEnumerable<string> Fetch(string commitHash)
     {
-        _command = _command with { Arguments = [commitHash] };
-        var files = _executor.Do(_command);
+        var files = _executor.Do(_command with { Arguments = [commitHash] });
         return _parse(files);
     }
 }

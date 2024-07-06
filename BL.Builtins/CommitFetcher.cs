@@ -7,16 +7,24 @@ public class CommitFetcher
 {
     protected Func<string, IEnumerable<Commit>> Parser { get; init; }
 
-    private Command _command;
-    private IExecutable _executor;
+    private readonly Command _command;
+    private readonly IExecutable _executor;
 
-    protected IEnumerable<Commit> Parse(string input)
+    protected virtual IEnumerable<Commit> Parse(string input)
     {
         return input.Split("##")
             .Where(line => !String.IsNullOrWhiteSpace(line))
             .Select(line => line.Split('~'))
             .Select(sections =>
-                new Commit(sections[0].TrimStart(), sections[1], sections[2], sections[4], sections[3], sections[5]))
+                new Commit(
+                    sections[0].TrimStart(), 
+                    sections[1], 
+                    sections[2], 
+                    sections[4], 
+                    sections[3], 
+                    sections[5]
+                   )
+                )
             .ToHashSet()
             .OrderByDescending(commit => commit.Date);
     }

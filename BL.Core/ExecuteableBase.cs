@@ -22,7 +22,7 @@ public abstract class ExecuteableBase : IExecutable
     }
     public virtual void Send(Command cmd)
     {
-        Logger.LogInformation($"Arguemnts Receieved: {cmd}");
+        Logger.LogInformation("Arguemnts Receieved: {cmd}", cmd);
         StartInformation.Arguments = cmd.ToString();
         InnerProcess.Start();
     }

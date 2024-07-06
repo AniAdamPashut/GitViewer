@@ -5,9 +5,9 @@ namespace BL.Builtins;
 
 public class CommandBuilder
 {
-    private string _command;
-    private List<Flag> _flags = [];
-    private List<string> _arguments = [];
+    private readonly string _command;
+    private readonly List<Flag> _flags = [];
+    private readonly List<string> _arguments = [];
 
     public CommandBuilder(string cmd)
     {
@@ -27,6 +27,6 @@ public class CommandBuilder
     }
     public Command Build()
     {
-        return new Command(_command, _arguments.ToArray(), _flags.ToArray());
+        return new Command(_command, [.. _arguments], _flags.ToArray());
     }
 }
