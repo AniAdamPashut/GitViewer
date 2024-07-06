@@ -21,11 +21,6 @@ ProcessStartInfo psi = new()
 
 using FileStream fs = new FileStream("config.json", FileMode.Open);
 
-Command gitReflogShow = new CommandBuilder("reflog")
-    .AddArgument("show")
-    .AddFlag(new ValuedLongFlag("pretty", "%h~%cn~%ch~%cI~%s"))
-    .Build();
-
 var json = JsonSerializer.Deserialize<CommandConfig>(fs);
 Console.WriteLine(json);
 Console.WriteLine(json.CommitList);
@@ -33,6 +28,8 @@ Console.WriteLine(json.FilesList);
 
 
 GitExecutable git = new(GIT_EXE_PATH, logger, psi);
-string output = git.Do(gitReflogShow);
+string output = git.Do(json.CommitList);
 Console.WriteLine(output);
+Console.WriteLine();
+Console.WriteLine(git.Do(json.FilesList));
 Console.ReadKey();

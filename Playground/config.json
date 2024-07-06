@@ -12,7 +12,7 @@
     "fileListCommand": {
         "name": "ls-tree",
         "arguments": [
-            "<COMMIT-HEAD>"
+            "HEAD"
         ],
         "flags": [
             {
