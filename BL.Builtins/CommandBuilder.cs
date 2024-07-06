@@ -5,26 +5,28 @@ namespace BL.Builtins;
 
 public class CommandBuilder
 {
-    private Command _command;
+    private string _command;
+    private List<Flag> _flags = [];
+    private List<string> _arguments = [];
 
-    public CommandBuilder(string cmd, HashSet<string> allowedFlags)
+    public CommandBuilder(string cmd)
     {
-        _command = new Command(cmd, [], allowedFlags);
+        _command = cmd;
     }
 
     public CommandBuilder AddFlag(Flag flag)
     {
-        _command.AddFlag(flag);
+        _flags.Add(flag);
         return this;
     }
     
     public CommandBuilder AddArgument(string arg)
     {
-        _command.AddArgument(arg);
+        _arguments.Add(arg);
         return this;
     }
     public Command Build()
     {
-        return _command;
+        return new Command(_command, _arguments.ToArray(), _flags.ToArray());
     }
 }

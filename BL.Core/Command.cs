@@ -1,47 +1,33 @@
 ﻿using BL.Core.Flags;
 
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace BL.Core;
 
+[JsonSerializable(typeof(Command))]
 public class Command
 {
-    IEnumerable<Flag> Flags => _flags;
-    IEnumerable<string> AllowedFlags => _allowedFlags;
+    [JsonPropertyName("name")]
     public string Name { get; }
+    [JsonPropertyName("arguments")]
+    public string[] Arguments { get; init; }
+    [JsonPropertyName("flags")]
+    public Flag[] Flags { get; init; }
 
-    private readonly HashSet<string> _allowedFlags;
-    private readonly List<Flag> _flags = [];
-    private readonly List<string> _arguments;
 
-    public Command(string cmd, List<string> arguments, HashSet<string> allowedFlags)
+    public Command(string name, string[] arguments, Flag[] flags)
     {
-        Name = cmd;
-        _allowedFlags = allowedFlags;
-        _arguments = arguments;
-    }
-
-    public void AddArgument(string arg)
-    {
-        _arguments.Add(arg);
-    }
-
-    public void AddFlag(Flag flag)
-    {
-        if (flag is null
-            || !_allowedFlags.Contains(flag.Name))
-        {
-            throw new ArgumentException($"Flag {flag?.Name ?? "(Unknown Flag)"} " +
-                $"is invalid in current command context ({Name})");
-        }
-        _flags.Add(flag);
+        Name = name;
+        Flags = flags;
+        Arguments = arguments;
     }
 
     public override string ToString()
     {
         StringBuilder sb = new();
         sb.Append(Name);
-        foreach (var arg in _arguments)
+        foreach (var arg in Arguments)
         {
             sb.Append(' ');
             sb.Append(arg);

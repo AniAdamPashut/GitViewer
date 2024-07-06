@@ -1,0 +1,28 @@
+{
+    "commitListCommand": {
+        "name": "reflog",
+        "arguments": [ "show" ],
+        "flags": [
+            {
+                "Name": "pretty",
+                "Value": "--pretty=%h~%cn~%ch~%cI~%s"
+            }
+        ]
+    },
+    "fileListCommand": {
+        "name": "ls-tree",
+        "arguments": [
+            "<COMMIT-HEAD>"
+        ],
+        "flags": [
+            {
+                "Name": "r",
+                "Value": "-r"
+            },
+            {
+                "Name": "name-only",
+                "Value": "--name-only"
+            }
+        ]
+    }
+}

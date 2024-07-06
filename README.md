@@ -1,6 +1,10 @@
-# GitViewer 
-Rational: I don't wanna push just to see if my `.vs` folder was removed by the gitignore.
+GitViewer 
+===
+`I don't wanna push just to see if my `.vs` folder was removed by the gitignore.`
 
+Todo
+===
+- Change the json format (it doesn't look good)
 
 Definitions
 ===
@@ -13,6 +17,5 @@ A program that looks into different staging of git and let you view your files i
 
 Relevant Git Commands
 ===
-1. `git ls-files` - Get all files tracked in a directory
-2. `git checkout <COMMIT-HASH>` - Allows inspecting different commits
-3. `git reflog show --pretty="%h~%cn~%ch~%cI~%s"` - Shows commit in a cool parse-able format
+1. `git ls-tree -r --name-only <COMMIT-HEAD>` - Shows all files in a specific commit 
+2. `git log --pretty="%h~%cn~%ch~%cI~%s"` - Shows commit in a cool parse-able format
