@@ -5,14 +5,15 @@ namespace BL.Builtins;
 
 public class CommitFetcher
 {
-    protected Func<string, IEnumerable<Commit>> Parser { get; init; } 
+    protected Func<string, IEnumerable<Commit>> Parser { get; init; }
 
     private Command _command;
     private IExecutable _executor;
 
     protected IEnumerable<Commit> Parse(string input)
     {
-        return input.Split(Environment.NewLine).Select(x => new Commit(x)).ToHashSet();
+        var lines = input.Split("##");
+        return lines.Where(line => line.Contains('~')).Select(x => new Commit(x)).ToHashSet();
     }
 
     public CommitFetcher(Command cmd, IExecutable exe)
@@ -32,7 +33,7 @@ public class CommitFetcher
     public IEnumerable<Commit> Fetch()
     {
         string exeOutput = _executor.Do(_command);
-        return Parser(exeOutput);
+        return Parser.Invoke(exeOutput);
     }
 }
 

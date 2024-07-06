@@ -5,7 +5,7 @@
         "flags": [
             {
                 "Name": "pretty",
-                "Value": "--pretty=%h~%cn~%ch~%cI~%s"
+                "Value": "--pretty=%h~%cn~%ch~%s~%cI##"
             }
         ]
     },

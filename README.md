@@ -5,6 +5,7 @@ GitViewer
 Todo
 ===
 - Change the json format (it doesn't look good)
+- The commit format is kinda konky. it works it isn't that good
 
 Definitions
 ===

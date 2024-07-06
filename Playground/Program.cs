@@ -25,6 +25,9 @@ GitExecutable git = new(GIT_EXE_PATH, logger, psi);
 
 var fetcher = new CommitFetcher(config.GetCommits, git);
 var commits = fetcher.Fetch();
+foreach (var commit in commits)
+{
+    Console.WriteLine(commit);
+}
 
-Console.WriteLine(commits);
 Console.ReadKey();
