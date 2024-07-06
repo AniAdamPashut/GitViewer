@@ -13,10 +13,12 @@ public class CommitFetcher
     protected IEnumerable<Commit> Parse(string input)
     {
         return input.Split("##")
-            .Where(line => line.Contains('~'))
+            .Where(line => !String.IsNullOrWhiteSpace(line))
             .Select(line => line.Split('~'))
-            .Select(sections => new Commit(sections[0], sections[1], sections[2], sections[4], sections[3]))
-            .ToHashSet();
+            .Select(sections =>
+                new Commit(sections[0].TrimStart(), sections[1], sections[2], sections[4], sections[3], sections[5]))
+            .ToHashSet()
+            .OrderByDescending(commit => commit.Date);
     }
 
     public CommitFetcher(Command cmd, IExecutable exe)

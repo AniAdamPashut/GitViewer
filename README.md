@@ -6,6 +6,7 @@ Todo
 ===
 - Change the json format (it doesn't look good)
 - The commit format is kinda konky. it works it isn't that good
+- UI
 
 Definitions
 ===
@@ -19,4 +20,4 @@ A program that looks into different staging of git and let you view your files i
 Relevant Git Commands
 ===
 1. `git ls-tree -r --name-only <COMMIT-HEAD>` - Shows all files in a specific commit 
-2. `git log --pretty="%h~%cn~%ch~%cI~%s"` - Shows commit in a cool parse-able format
+2. `git log --pretty="%h~%cn~%ch~%s~%cI"~%D##` - Shows commit in a cool parse-able format

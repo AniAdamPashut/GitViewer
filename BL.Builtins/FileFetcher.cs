@@ -11,7 +11,7 @@ public class FileFetcher
 
     protected IEnumerable<string> Parse(string input)
     {
-        return input.Split("\n");
+        return input.Split(Environment.NewLine);
     }
 
     public FileFetcher(Command command, IExecutable executor)

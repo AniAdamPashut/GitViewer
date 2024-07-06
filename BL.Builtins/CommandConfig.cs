@@ -7,8 +7,8 @@ namespace BL.Builtins;
 public record CommandConfig
 {
     [JsonPropertyName("commitListCommand")]
-    public Command GetCommits { get; init; }
+    public Command FetchCommitsCommand { get; init; }
     [JsonPropertyName("fileListCommand")]
-    public Command GetFiles { get; init; }
+    public Command FetchFilesCommand { get; init; }
 }
 

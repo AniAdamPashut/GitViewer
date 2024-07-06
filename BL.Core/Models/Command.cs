@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace BL.Core.Models;
 
 [JsonSerializable(typeof(Command))]
-public record Command
+public sealed record Command
 {
     [JsonPropertyName("name")]
     public string Name { get; }

@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text.Json;
 
-
 using ILoggerFactory factory = LoggerFactory.Create(builder =>
 {
     builder.AddConsole();
@@ -23,15 +22,15 @@ var config = JsonSerializer.Deserialize<CommandConfig>(fs);
 
 GitExecutable git = new(GIT_EXE_PATH, logger, psi);
 
-var commitFetcher = new CommitFetcher(config.GetCommits, git);
+var commitFetcher = new CommitFetcher(config.FetchCommitsCommand, git);
 var commits = commitFetcher.Fetch();
 foreach (var commit in commits)
 {
-    Console.WriteLine(commit.Hash);
+    Console.WriteLine(commit.Display);
 }
 
-var fileFetcher = new FileFetcher(config.GetFiles, git);
-var files = fileFetcher.Fetch(commits.First().Hash);
+var fileFetcher = new FileFetcher(config.FetchFilesCommand, git);
+var files = fileFetcher.Fetch("feature/base");
 foreach (var file in files)
 {
     Console.WriteLine(file);
