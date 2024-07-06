@@ -1,7 +1,7 @@
 {
     "commitListCommand": {
-        "name": "reflog",
-        "arguments": [ "show" ],
+        "name": "log",
+        "arguments": [],
         "flags": [
             {
                 "Name": "pretty",

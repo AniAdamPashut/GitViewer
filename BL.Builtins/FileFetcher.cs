@@ -33,6 +33,7 @@ public class FileFetcher
         var files = _executor.Do(_command with { Arguments = [commit.Hash] });
         return _parse(files);
     }
+
     public IEnumerable<string> Fetch(string commitHash)
     {
         var files = _executor.Do(_command with { Arguments = [commitHash] });

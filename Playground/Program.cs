@@ -31,10 +31,14 @@ foreach (var commit in commits)
 }
 
 var fileFetcher = new FileFetcher(config.FetchFilesCommand, git);
-var files = fileFetcher.Fetch("HEAD");
-foreach (var file in files)
+foreach (var commit in commits)
 {
-    Console.WriteLine(file);
+    var files = fileFetcher.Fetch(commit);
+    foreach (var file in files)
+    {
+        Console.WriteLine(file);
+    }
+    Console.WriteLine("################################");
 }
 
 Console.ReadKey();

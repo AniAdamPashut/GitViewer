@@ -1,5 +1,8 @@
 ﻿namespace BL.Core.Models;
 
+
+
+
 public sealed record Commit : IEquatable<Commit>
 {
     public string Display 

@@ -14,7 +14,6 @@ public sealed record Command
     [JsonPropertyName("flags")]
     public Flag[] Flags { get; init; }
 
-
     public Command(string name, string[] arguments, Flag[] flags)
     {
         Name = name;

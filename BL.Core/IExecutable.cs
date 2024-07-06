@@ -8,4 +8,3 @@ public interface IExecutable
     string Do(Command cmd);
 
 }
-

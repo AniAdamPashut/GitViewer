@@ -27,6 +27,6 @@ public class CommandBuilder
     }
     public Command Build()
     {
-        return new Command(_command, [.. _arguments], _flags.ToArray());
+        return new Command(_command, [.. _arguments], [.. _flags]);
     }
 }

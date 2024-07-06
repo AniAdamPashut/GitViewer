@@ -20,15 +20,18 @@ public abstract class ExecuteableBase : IExecutable
         StartInformation = psi;
         InnerProcess = new() { StartInfo = StartInformation };
     }
+
     public virtual void Send(Command cmd)
     {
         Logger.LogInformation("Arguemnts Receieved: {cmd}", cmd);
         StartInformation.Arguments = cmd.ToString();
         InnerProcess.Start();
     }
-    public string Do(Command cmd)
+
+    public virtual string Do(Command cmd)
     {
         Send(cmd);
         return ProcessOutput.ReadToEnd();
     }
 }
+ 
